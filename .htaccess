@@ -1,0 +1,75 @@
+# $Id$
+#
+# This is used with Apache WebServers
+#
+# For this to work, you must include the parameter 'Options' to
+# the AllowOverride configuration
+#
+# Example:
+#
+# <Directory "/usr/local/apache/htdocs">
+#   AllowOverride Options
+# </Directory>
+#
+# 'All' with also work. (This configuration is in the
+# apache/conf/httpd.conf file)
+
+# The following makes adjustments to the SSL protocol for Internet
+# Explorer browsers
+
+#<IfModule mod_setenvif.c>
+#  <IfDefine SSL>
+#    SetEnvIf User-Agent ".*MSIE.*" \
+#             nokeepalive ssl-unclean-shutdown \
+#             downgrade-1.0 force-response-1.0
+#  </IfDefine>
+#</IfModule>
+
+# If Search Engine Friendly URLs do not work, try enabling the
+# following Apache configuration parameter
+ 
+# AcceptPathInfo On
+
+# Fix certain PHP values
+# (commented out by default to prevent errors occuring on certain
+# servers)
+
+# php_value session.use_trans_sid 0
+# php_value register_globals 1
+# Begin Ultimate SEO V2.2d 
+#Options +FollowSymLinks
+RewriteEngine On 
+
+  # RewriteBase instructions 
+  # Change RewriteBase dependent on how your shop is accessed as below. 
+  # http://www.mysite.com = RewriteBase / 
+  # http://www.mysite.com/catalog/ = RewriteBase /catalog/  
+  # http://www.mysite.com/catalog/shop/ = RewriteBase /catalog/shop/ 
+
+  # Change the following line using the instructions above  
+  
+RewriteBase /
+RewriteRule ^home$ index.php
+RewriteRule ^why-lsbe$ whyLsbe.php
+RewriteRule ^careers$ careers.php
+RewriteRule ^about-us/(.*)$ aboutUsFtr.php?id=$1&%{QUERY_STRING}
+RewriteRule ^about-us$ aboutUs.php
+RewriteRule ^training-venues$ trainingVenues.php
+RewriteRule ^courses$ courses.php
+RewriteRule ^contact-us$ contact.php
+RewriteRule ^p/(.*)$ pages.php?id=$1&%{QUERY_STRING}
+RewriteRule ^news$ news.php
+RewriteRule ^news/(.*)$ news.php?id=$1&%{QUERY_STRING}
+RewriteRule ^courses/(.*)$ couresCategory.php?id=$1&%{QUERY_STRING}
+RewriteRule ^apply$ applyNow.php
+RewriteRule ^course/(.*)$ course.php?id=$1&%{QUERY_STRING}
+RewriteRule ^admissions$ admissions.php
+RewriteRule ^faq$ faq.php
+RewriteRule ^blog$ blog.php
+RewriteRule ^ui$ uniInfo.php
+RewriteRule ^page/(.*)$ infoPage.php?id=$1&%{QUERY_STRING}
+RewriteRule ^blog/(.*)$ blog.php?id=$1&%{QUERY_STRING}
+RewriteRule ^apply-view$ applyNowView.php
+ErrorDocument 404 /404page.php
+# End Ultimate SEO V2.2d
+# php -- BEGIN cPanel-generated handler, do not edit
